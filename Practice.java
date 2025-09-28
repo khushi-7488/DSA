@@ -1,10 +1,18 @@
 import java.util.*;
-class Practice{
+
+class Practice {
     public static void main(String args[]) {
         Scanner scan = new Scanner(System.in);
-        int number1 = scan.nextInt();
-        int number2 = scan.nextInt();
-        System.out.println(number1 + number2);
+        int n = scan.nextInt();
+        int i = 1;
+        // for(int i=1; i<=n; i++){
+
+        // System.out.println("****");
+        // }
+        while (i <= n) {
+            System.out.println("****");
+           i++;
+        }
         scan.close();
     }
-} 
+}
