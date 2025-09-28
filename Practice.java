@@ -1,5 +1,10 @@
+import java.util.*;
 class Practice{
     public static void main(String args[]) {
-        System.out.print("helloworld");
+        Scanner scan = new Scanner(System.in);
+        int number1 = scan.nextInt();
+        int number2 = scan.nextInt();
+        System.out.println(number1 + number2);
+        scan.close();
     }
-}
+} 
