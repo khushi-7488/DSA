@@ -61,15 +61,36 @@ class Practice {
         return mul;
     }
 
-        public static int factorial(int n) {
-            int f = 1;
-            for(int i=1; i<=n; i++){
-                f = f*i;
-            }
-            return f;
+    public static int factorial(int n) {
+        int f = 1;
+        for (int i = 1; i <= n; i++) {
+            f = f * i;
+        }
+        return f;
+    }
+
+    public static int bionomial(int n, int r) {
+        int n_fact = factorial(n);
+        int r_fact = factorial(r);
+        int fact_nmr = factorial(n - r);
+        int bincoff = n_fact / (r_fact * fact_nmr);
+        return bincoff;
+    }
+
+    public static boolean prime(int n) {
+        if(n<2){
+            return false;
         }
 
+        for (int i = 2; i <= Math.sqrt(n); i++) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public static void main(String args[]) {
-        System.out.println(factorial(4));
+        System.out.println(prime(-15));
     }
 }
