@@ -78,7 +78,7 @@ class Practice {
     }
 
     public static boolean prime(int n) {
-        if(n<2){
+        if (n < 2) {
             return false;
         }
 
@@ -90,7 +90,23 @@ class Practice {
         return true;
     }
 
+    public static void hollow_rectangle(int totalrows, int totalcolms) {
+        for (int i = 1; i <= totalrows; i++) {
+            for (int j = 1; j <= totalcolms; j++) {
+                if (i == 1 || i == totalrows || j == 1 || j == totalcolms) {
+                    System.out.print("*");
+                } else {
+                    System.out.print("");
+
+                }
+            }
+
+            System.out.println();
+        }
+    }
+
     public static void main(String args[]) {
-        System.out.println(prime(-15));
+        hollow_rectangle(4, 5);
+        // System.out.println(prime(-15));
     }
 }
