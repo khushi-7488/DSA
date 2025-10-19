@@ -105,8 +105,8 @@ class Practice {
         }
     }
 
-//     public static void main(String args[]) {
-//         hollow_rectangle(4, 5);
-//         // System.out.println(prime(-15));
-//     }
-// }
+    public static void main(String args[]) {
+        hollow_rectangle(4, 5);
+        // System.out.println(prime(-15));
+    }
+}
