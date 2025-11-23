@@ -90,7 +90,7 @@ class Practice {
         return true;
     }
 
-    public static void hollow_rectangle(int totalrows, int totalcolms) {
+    public static void hollow__rectangle(int totalrows, int totalcolms) {
         for (int i = 1; i <= totalrows; i++) {
             for (int j = 1; j <= totalcolms; j++) {
                 if (i == 1 || i == totalrows || j == 1 || j == totalcolms) {
@@ -106,7 +106,7 @@ class Practice {
     }
 
     public static void main(String args[]) {
-        hollow_rectangle(4, 5);
+        hollow__rectangle(4, 5);
         // System.out.println(prime(-15));
     }
 }
