@@ -78,6 +78,7 @@ class Practice {
     }
 
     public static boolean prime(int n) {
+
         if (n < 2) {
             return false;
         }
@@ -105,8 +106,17 @@ class Practice {
         }
     }
 
+    public static int factorials(int a) {
+        int f = 1;
+        for (int i = 1; i <= a; i++) {
+            f = f * i;
+        }
+        return f;
+    }
+
     public static void main(String args[]) {
-        hollow__rectangle(4, 5);
-        // System.out.println(prime(-15));
+        int a = -1;
+         int f = factorials(a);
+         System.out.println(f);
     }
 }
