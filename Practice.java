@@ -91,6 +91,15 @@ class Practice {
         return true;
     }
 
+    public static void primeRange (int n){
+
+        for (int i = 2; i <= n ; i ++){
+            if(prime(i)){
+                System.out.println(i);
+            }
+        }
+    }
+
     public static void hollow__rectangle(int totalrows, int totalcolms) {
         for (int i = 1; i <= totalrows; i++) {
             for (int j = 1; j <= totalcolms; j++) {
@@ -115,8 +124,8 @@ class Practice {
     }
 
     public static void main(String args[]) {
-        int a = -1;
-         int f = factorials(a);
-         System.out.println(f);
+        
+       primeRange(5);
     }
 }
+
