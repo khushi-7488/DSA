@@ -2,22 +2,90 @@ import java.util.*;
 
 public class Arr {
 
-    // pairing the numbers 
-    public static void pairs(int num[]) {
-        for (int i = 0; i < num.length; i++) {
-            for (int j = i + 1; j < num.length; j++) {
-                System.out.print("(" + num[i] + "," + num[j] + ") ");
-            }
-            System.out.println();
+    // find the maximum value by using prefix sum 
+    public static void maxArrays(int num[]) {
+
+        int prefix[] = new int[num.length];
+        int sum = 0;
+        int max = Integer.MIN_VALUE;
+
+        prefix[0] = num[0];
+        for (int i = 1; i < prefix.length; i++) {
+            prefix[i] = prefix[i - 1] + num[i];
         }
+
+        for (int i = 0; i < num.length; i++) {
+            for (int j = i; j < num.length; j++) {
+                sum = i == 0 ? prefix[j] : prefix[j] - prefix[i - 1];
+
+                if (sum > max) {
+                    max = sum;
+                }
+            }
+        }
+        System.out.println("max sum is : " + max);
+
     }
 
     public static void main(String[] args) {
         int num[] = { 2, 3, 4, 5, 6 };
-        pairs(num);
+        maxArrays(num);
     }
 
 }
+
+// print subArrays find sum and min and max value
+// public static void subArrays(int num[]) {
+// int max = Integer.MIN_VALUE;
+// int min = Integer.MAX_VALUE;
+// for (int i = 0; i < num.length; i++) {
+// for (int j = i; j < num.length; j++) {
+// int sum = 0;
+// for (int k = i; k <= j; k++) {
+// sum = num[k] + sum;
+// if (sum > max) {
+// max = sum;
+// }
+
+// if (sum < min) {
+// min = sum;
+// }
+
+// System.out.print(num[k] + " ");
+// }
+// System.out.println("sum is : " + sum);
+// System.out.println();
+// }
+// System.out.println();
+
+// }
+// System.out.println("max is " + max);
+// System.out.println("min is " + min);
+// }
+
+// public static void main(String[] args) {
+// int num[] = { 2, 3, 4, 5, 6 };
+// subArrays(num);
+// }
+
+// }
+
+// pairing the numbers
+// public static void pairs(int num[]) {
+// for (int i = 0; i < num.length; i++) {
+// for (int j = i + 1; j < num.length; j++) {
+// System.out.print("(" + num[i] + "," + num[j] + ") ");
+// }
+// System.out.println();
+// }
+// }
+
+// public static void main(String[] args) {
+// int num[] = { 2, 3, 4, 5, 6 };
+// pairs(num);
+// }
+
+// }
 
 // reverse of a array
 // public static void reverse(int num[]) {
@@ -72,10 +140,10 @@ public class Arr {
 
 // largest number linear search
 // public static int largest(int num[]) {
-// int min = Integer.MIN_VALUE;
+// int max = Integer.MIN_VALUE;
 // for (int i = 0; i < num.length; i++) {
-// if (min < num[i]) {
-// min = num[i];
+// if (max > num[i]) {
+// max = num[i];
 // }
 // }
 // return min;
