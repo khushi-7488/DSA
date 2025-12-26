@@ -1,38 +1,60 @@
 import java.util.*;
 
 public class Arr {
-
-    // find the maximum value by using prefix sum 
-    public static void maxArrays(int num[]) {
-
-        int prefix[] = new int[num.length];
+    // find maximum subarray by using kadane algorithm 
+    public static void maxSum(int num[]) {
         int sum = 0;
         int max = Integer.MIN_VALUE;
-
-        prefix[0] = num[0];
-        for (int i = 1; i < prefix.length; i++) {
-            prefix[i] = prefix[i - 1] + num[i];
-        }
-
         for (int i = 0; i < num.length; i++) {
-            for (int j = i; j < num.length; j++) {
-                sum = i == 0 ? prefix[j] : prefix[j] - prefix[i - 1];
+            sum = sum + num[i];
+            if (sum < 0) {
+                sum = 0;
 
-                if (sum > max) {
-                    max = sum;
-                }
+            }
+            if (sum > max) {
+                max = sum;
             }
         }
-        System.out.println("max sum is : " + max);
-
+        System.out.println(max);
     }
 
     public static void main(String[] args) {
-        int num[] = { 2, 3, 4, 5, 6 };
-        maxArrays(num);
+        int num[] = { -2, -1, 4, 2, -1, 5, -3 };
+        maxSum(num);
     }
-
 }
+
+// find the maximum value by using prefix sum
+// public static void maxArrays(int num[]) {
+
+// int prefix[] = new int[num.length];
+// int sum = 0;
+// int max = Integer.MIN_VALUE;
+
+// prefix[0] = num[0];
+// for (int i = 1; i < prefix.length; i++) {
+// prefix[i] = prefix[i - 1] + num[i];
+// }
+
+// for (int i = 0; i < num.length; i++) {
+// for (int j = i; j < num.length; j++) {
+// sum = i == 0 ? prefix[j] : prefix[j] - prefix[i - 1];
+
+// if (sum > max) {
+// max = sum;
+// }
+// }
+// }
+// System.out.println("max sum is : " + max);
+
+// }
+
+// public static void main(String[] args) {
+// int num[] = { 2, 3, 4, 5, 6 };
+// maxArrays(num);
+// }
+
+// }
 
 // print subArrays find sum and min and max value
 // public static void subArrays(int num[]) {
