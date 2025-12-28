@@ -1,30 +1,27 @@
 public class BuyOrSell {
-    public static int profit(int num[]) {
-        int sp = Integer.MIN_VALUE;  //sp = selling price
-        int bp = Integer.MAX_VALUE;  //bp = buying price
-        for (int i = 0; i < num.length; i++) {
-            if (sp < num[i]) {
-                sp = num[i];
-            }
-            if (bp > num[i]) {
-                bp = num[i];
+    public static int profit(int price[]) {
+        int bp = Integer.MAX_VALUE; // bp = buying price
+        int maxProfit = 0;
+        for (int i = 0; i < price.length; i++) {
+            if (bp < price[i]) {
+                int profit = price[i] - bp;
+                // if(profit > maxProfit){
+                // maxProfit = profit;
+                // }
+
+                maxProfit = Math.max(profit, maxProfit);
+
+            } else {
+                bp = price[i];
             }
         }
-        if (bp < sp) {
-            return sp - bp;
-        }
-        return 0;
+        return maxProfit;
     }
 
     public static void main(String[] args) {
-        int num[] = { 7, 1, 5, 3, 6, 4 };
-        int profit = profit(num);
-        if (profit == 0) {
-            System.out.println("no profit ");
-        } else {
+        int price[] = { 7, 1, 5, 3, 6, 4 };
+        int profit = profit(price);
 
-            System.out.println(profit);
-        }
+        System.out.println(profit);
     }
-
 }
