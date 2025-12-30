@@ -7,9 +7,9 @@ public class Spiral {
                 { 5, 6, 7, 8 },
                 { 1, 3, 6, 9 } };
         int startrow = 0;
-        int endrows = matrix.length -1;
+        int endrows = matrix.length - 1;
         int startcol = 0;
-        int endcol = matrix[0].length-1;
+        int endcol = matrix[0].length - 1;
         while (startrow <= endrows && startcol <= endcol) {
             // top
             for (int j = startcol; j <= endcol; j++) {
@@ -20,11 +20,17 @@ public class Spiral {
                 System.out.print(matrix[j][endcol] + " ");
             }
             // bottom
-            for (int j = endcol - 1; j >= startrow; j--) {
+            for (int j = endcol - 1; j >= startcol; j--) {
+                  if(startrow == endrows){
+                    break;
+                }
                 System.out.print(matrix[endrows][j] + " ");
             }
             // left
             for (int j = endrows - 1; j >= startrow + 1; j--) {
+                if(startcol == endcol){
+                    break;
+                }
                 System.out.print(matrix[j][startcol] + " ");
             }
             startrow++;
