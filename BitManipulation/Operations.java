@@ -10,9 +10,9 @@ public class Operations {
         }
     }
 
-    public static void setIthBit(int n, int i) {
+    public static int setIthBit(int n, int i) {
         int bitMask = 1 << i;
-        System.out.println(n | bitMask);
+        return n | bitMask;
     }
 
     public static int clearIthBit(int n, int i) {
@@ -30,6 +30,7 @@ public class Operations {
         // System.err.println(getIthBit(5, 3));
         // System.err.println(clearIthBit(15, 2));
         System.err.println(clearRangeOfBit(10, 2,4));
-        // setIthBit(15, 2);
+        // System.err.println(setIthBit(15, 2));
+        
     }
 }
