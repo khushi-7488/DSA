@@ -14,6 +14,6 @@ public class Fabonacci {
     }
 
     public static void main(String[] args) {
-        System.out.println(calcFab(10));
+        System.out.println(calcFab(30));
     }
 }
