@@ -13,6 +13,7 @@ public class FirstOccurance {
 
     public static void main(String[] args) {
         int arr[] = { 1, 2, 3, 2, 5 };
-       System.out.println( calcFab(arr, 0, 5));
+     System.out.println(calcFab(arr, 0, 2));   
     }
 }
+    
