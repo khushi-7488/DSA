@@ -2,8 +2,8 @@ package Recursion;
 
 public class Power {
     public static int calcPow(int n, int y) {
-        if(y == 1){
-            return n;
+        if(y == 0){
+            return 1;
         }
         return n * calcPow(n, y-1);
     }
