@@ -18,5 +18,4 @@ public class BinaryString {
 
         printStr(3, "", 0);
     }
-} 
-                
+}
