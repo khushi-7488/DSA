@@ -14,6 +14,5 @@ public class Largest {
     public static void main(String ars[]) {
         String fruits[] = { "apple", "mango", "banana" };
         largest(fruits);
-
     }
 }
