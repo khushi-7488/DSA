@@ -10,7 +10,6 @@ public class BackTrackingArray {
         arr[i] = val;
         changeArr(arr, i + 1, val + 1);
         arr[i] = arr[i] - 2;
-
     }
 
     public static void printArr(int arr[]) {
