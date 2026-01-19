@@ -7,7 +7,7 @@ public class Tiling {
             return 1;
         }
 
-        int vtcl = tiling(n - 1);
+        int vtcl = tiling(n - 1);   
         int hrzntl = tiling(n - 2);
         return vtcl + hrzntl;
     }
