@@ -13,10 +13,11 @@ public class Grid {
         return w1 + w2;
     }
 
+    
     public static void main(String[] args) {
         int n = 1000;
         int grid[][] = new int[n][n];
        System.out.println(grids(grid, 0, 0));
-
     }
 }
+ 
