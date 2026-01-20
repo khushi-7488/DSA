@@ -7,9 +7,9 @@ public class Permutation {
             return;
         }
         for (int i = 0; i < str.length(); i++) {
-            char ch = str.charAt(i);
+            char curr = str.charAt(i);
             String remaining = str.substring(0, i) + str.substring(i + 1);
-            arrangement(remaining, res + ch);
+            arrangement(remaining, res + curr);
         }
     }
 
