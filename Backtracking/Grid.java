@@ -15,7 +15,7 @@ public class Grid {
 
     
     public static void main(String[] args) {
-        int n = 1000;
+        int n = 3;
         int grid[][] = new int[n][n];
        System.out.println(grids(grid, 0, 0));
     }
