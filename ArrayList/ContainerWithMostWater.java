@@ -19,6 +19,7 @@ public class ContainerWithMostWater {
     }
 
     // this is more sufficient
+    // 2 pointer approach
     public static int storewater(ArrayList<Integer> height) {
         int maxWater = 0;
         int lp = 0;

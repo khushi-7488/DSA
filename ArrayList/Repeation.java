@@ -1,6 +1,6 @@
 package ArrayList;
 
-public class c {
+public class Repeation {
     public static void main(String[] args) {
         int[] arr = { 1, 2, 3 };
         int arr2 = arr.length * 2;
