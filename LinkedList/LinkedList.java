@@ -115,7 +115,7 @@ public class LinkedList {
             return;
         }
         int i = 1;
-        int iToFind = sz - n ;
+        int iToFind = sz - n;
         Node prev = head;
         while (i < iToFind) {
             prev = prev.next;
@@ -187,6 +187,7 @@ public class LinkedList {
         head = prev;
     }
 
+    // palindrome
     
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
@@ -224,8 +225,6 @@ public class LinkedList {
 
         ll.removeFromEnd(3);
         ll.print();
-
-
 
         System.out.println("size of linkedList is " + ll.size);
     }
