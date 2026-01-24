@@ -234,9 +234,63 @@ public class LinkedList {
         return true;
     }
 
+    // loop
+    public static boolean isCycle() {
+        Node slow = head;
+        Node fast = head;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // remove a loop/cycle
+    public static void removeCycle() {
+        // first detect whether is this a cycle or not
+        Node slow = head;
+        Node fast = head;
+        boolean iscycle = false;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) {
+                iscycle = true;
+                break;
+            }
+        }
+        if (iscycle == false) {
+            return;
+        }
+        // find meeting point
+        Node prev = null;
+        slow = head;
+
+        while (slow != fast) {
+            prev = fast;
+            slow = slow.next;
+            fast = fast.next;
+        }
+        prev.next = null;
+    }
+
     public static void main(String[] args) {
-        LinkedList ll = new LinkedList();
+        // LinkedList ll = new LinkedList();
         // ll.print();
+        head = new Node(1);
+        Node temp = new Node(2);
+        head.next = temp;
+        head.next.next = new Node(3);
+        head.next.next.next = temp;
+
+        System.out.println(isCycle());
+        removeCycle();
+        System.out.println(isCycle());
 
         // ll.addFirst(2);
         // ll.print();
@@ -244,15 +298,15 @@ public class LinkedList {
         // ll.addFirst(1);
         // ll.print();
 
-        ll.addLast(1);
-        // ll.print();
+        // ll.addLast(1);
+        // // ll.print();
 
-        ll.addLast(2);
+        // ll.addLast(2);
+        // // ll.print();
+        // ll.addLast(2);
+        // // ll.print();
+        // ll.addLast(1);
         // ll.print();
-        ll.addLast(2);
-        // ll.print();
-        ll.addLast(1);
-        ll.print();
 
         // ll.addMiddle(9, 2);
         // ll.print();
@@ -275,7 +329,7 @@ public class LinkedList {
         // ll.removeFromEnd(3);
         // ll.print();
 
-        System.out.println(ll.isPalindrome());
+        // System.out.println(ll.isPalindrome());
 
         // System.out.println("size of linkedList is " + ll.size);
     }
