@@ -187,26 +187,75 @@ public class LinkedList {
         head = prev;
     }
 
-    // palindrome
-    
+    // Check for palindrome -----------------
+
+    // --------------- slow fast approach ---------------
+    public Node findMid(Node head) {
+        Node slow = head;
+        Node fast = head;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
+    }
+
+    public boolean isPalindrome() {
+        if (head == null || head.next == null) {
+            return true;
+        }
+
+        // find mid
+        Node midNode = findMid(head);
+
+        // reverse 2nd half
+        Node prev = null;
+        Node curr = midNode;
+        Node next;
+
+        while (curr != null) {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        Node right = prev;
+        Node left = head;
+
+        // check left half and right half
+        while (right != null) {
+            if (left.data != right.data) {
+                return false;
+            }
+            left = left.next;
+            right = right.next;
+        }
+        return true;
+    }
+
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
+        // ll.print();
+
+        // ll.addFirst(2);
+        // ll.print();
+
+        // ll.addFirst(1);
+        // ll.print();
+
+        ll.addLast(1);
+        // ll.print();
+
+        ll.addLast(2);
+        // ll.print();
+        ll.addLast(2);
+        // ll.print();
+        ll.addLast(1);
         ll.print();
 
-        ll.addFirst(2);
-        ll.print();
-
-        ll.addFirst(1);
-        ll.print();
-
-        ll.addLast(3);
-        ll.print();
-
-        ll.addLast(4);
-        ll.print();
-
-        ll.addMiddle(9, 2);
-        ll.print();
+        // ll.addMiddle(9, 2);
+        // ll.print();
 
         // ll.removeFirst();
         // ll.print();
@@ -223,9 +272,11 @@ public class LinkedList {
         // ll.reverse();
         // ll.print();
 
-        ll.removeFromEnd(3);
-        ll.print();
+        // ll.removeFromEnd(3);
+        // ll.print();
 
-        System.out.println("size of linkedList is " + ll.size);
+        System.out.println(ll.isPalindrome());
+
+        // System.out.println("size of linkedList is " + ll.size);
     }
 }
