@@ -1,5 +1,7 @@
 package LinkedList;
 
+import TwoDArray.Assignment2;
+
 public class LinkedList {
     public static class Node {
         int data;
@@ -392,38 +394,143 @@ public class LinkedList {
         return p1; // Intersection node or null
     }
 
+    // Assignment2
+    // delete n nodes after m nodes of a linked list
+    public static Node deleteNNodes(Node head, int n) {
+        if (head == null || n <= 0)
+            return head;
+
+        Node current = head;
+
+        while (current != null) {
+            // Skip first n nodes
+            int count = 1;
+            while (current != null && count < n) {
+                current = current.next;
+                count++;
+            }
+
+            // If we reached the end, break
+            if (current == null)
+                break;
+
+            // Delete next n nodes
+            // current.next points to the first node to delete
+            Node nodeToDelete = current.next;
+            count = 0;
+
+            while (nodeToDelete != null && count < n) {
+                nodeToDelete = nodeToDelete.next;
+                count++;
+            }
+
+            // Link current to the node after deleted nodes
+            current.next = nodeToDelete;
+
+            // Move to next node for next iteration
+            current = current.next;
+        }
+
+        return head;
+    }
+
+    //Assignment3
+    // swap two nodes by their key values in a linked list
+    public static Node swapByValue(Node head, int key1, int key2) {
+        if (head == null || key1 == key2) {
+            return head;
+        }
+
+        // Find first node with key1
+        Node node1Prev = null;
+        Node node1 = head;
+        while (node1 != null && node1.data != key1) {
+            node1Prev = node1;
+            node1 = node1.next;
+        }
+
+        // Find second node with key2
+        Node node2Prev = null;
+        Node node2 = head;
+        while (node2 != null && node2.data != key2) {
+            node2Prev = node2;
+            node2 = node2.next;
+        }
+
+        // If either key not found
+        if (node1 == null || node2 == null) {
+            System.out.println("One or both keys not found in the list");
+            return head;
+        }
+
+        // If node1 is head
+        if (node1Prev == null) {
+            head = node2;
+        } else {
+            node1Prev.next = node2;
+        }
+
+        // If node2 is head
+        if (node2Prev == null) {
+            head = node1;
+        } else {
+            node2Prev.next = node1;
+        }
+
+        // Swap the next pointers
+        Node temp = node1.next;
+        node1.next = node2.next;
+        node2.next = temp;
+
+        return head;
+    }
+
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
 
-        Node headA, headB;
-        headA = new Node(10);
-        headB = new Node(3);
+        Node head = new Node(1);
+        head.next = new Node(2);
+        head.next.next = new Node(3);
+        head.next.next.next = new Node(4);
 
-        Node newNode = new Node(6);
-        headB.next = newNode;
+        System.out.println("Original List:");
+        ll.print(head);
 
-        newNode = new Node(9);
-        headB.next.next = newNode;
+        int key1 = 2;
+        int key2 = 4;
+        head = swapByValue(head, key1, key2);
 
-        newNode = new Node(15);
-        headA.next = newNode;
-        headB.next.next.next = newNode;
+        System.out.println("After swapping " + key1 + " and " + key2 + ":");
+        ll.print(head);
+        // Node headA, headB;
+        // headA = new Node(10);
+        // headB = new Node(3);
 
-        newNode = new Node(30);
-        headA.next.next = newNode;
+        // Node newNode = new Node(6);
+        // headB.next = newNode;
 
-        headA.next.next.next = null;
+        // newNode = new Node(9);
+        // headB.next.next = newNode;
 
-        ll.print(headB);
-        ll.print(headA);
+        // newNode = new Node(15);
+        // headA.next = newNode;
+        // headB.next.next.next = newNode;
 
-        Node getIntersection = ll.getIntersectionPoint(headA, headB);
+        // newNode = new Node(30);
+        // headA.next.next = newNode;
 
-        if (getIntersection == null) {
-            System.out.println("No intersection point");
-        } else {
-            System.out.println("Intersection point " + getIntersection.data);
-        }
+        // headA.next.next.next = null;
+
+        // ll.print(headB);
+        // ll.print(headA);
+
+        // Node getIntersection = ll.getIntersectionPoint(headA, headB);
+
+        // if (getIntersection == null) {
+        // System.out.println("No intersection point");
+        // } else {
+        // System.out.println("Intersection point " + getIntersection.data);
+        // }
 
         // ll.print();
         // head = new Node(1);
