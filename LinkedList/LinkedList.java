@@ -127,7 +127,7 @@ public class LinkedList {
     }
 
     // print
-    public void print() {
+    public void print(Node head) {
         if (head == null) {
             System.out.println("LL is empty");
             return;
@@ -335,7 +335,7 @@ public class LinkedList {
 
     }
 
-    // add the linkedlist in the zigZag form 
+    // add the linkedlist in the zigZag form
     public void zigZag() {
         // find mid
         Node mid = getMid(head);
@@ -368,8 +368,63 @@ public class LinkedList {
         }
     }
 
+    // Assignment questions 1
+    // find the intersection point in the linked list
+    public Node getIntersectionPoint(Node headA, Node headB) {
+        if (headA == null || headB == null) {
+            return null;
+        }
+        Node p1 = headA;
+        Node p2 = headB;
+
+        while (p1 != p2) {
+            if (p1 == null) {
+                p1 = headB;
+            } else {
+                p1 = p1.next;
+            }
+            if (p2 == null) {
+                p2 = headA;
+            } else {
+                p2 = p2.next;
+            }
+        }
+        return p1; // Intersection node or null
+    }
+
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
+
+        Node headA, headB;
+        headA = new Node(10);
+        headB = new Node(3);
+
+        Node newNode = new Node(6);
+        headB.next = newNode;
+
+        newNode = new Node(9);
+        headB.next.next = newNode;
+
+        newNode = new Node(15);
+        headA.next = newNode;
+        headB.next.next.next = newNode;
+
+        newNode = new Node(30);
+        headA.next.next = newNode;
+
+        headA.next.next.next = null;
+
+        ll.print(headB);
+        ll.print(headA);
+
+        Node getIntersection = ll.getIntersectionPoint(headA, headB);
+
+        if (getIntersection == null) {
+            System.out.println("No intersection point");
+        } else {
+            System.out.println("Intersection point " + getIntersection.data);
+        }
+
         // ll.print();
         // head = new Node(1);
         // Node temp = new Node(2);
@@ -384,17 +439,17 @@ public class LinkedList {
         // ll.addFirst(2);
         // ll.print();
 
-        ll.addFirst(1);
-        ll.addFirst(2);
-        ll.addFirst(3);
-        ll.addFirst(4);
-        ll.addFirst(5);
-        ll.print();
+        // ll.addFirst(1);
+        // ll.addFirst(2);
+        // ll.addFirst(3);
+        // ll.addFirst(4);
+        // ll.addFirst(5);
+        // ll.print();
 
         // ll.head = ll.mergeSort(ll.head);
         // ll.print();
-        ll.zigZag();
-        ll.print();
+        // ll.zigZag();
+        // ll.print();
         // ll.addLast(1);
         // // ll.print();
 
