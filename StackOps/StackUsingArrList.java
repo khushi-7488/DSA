@@ -1,8 +1,8 @@
-package Stack;
+package StackOps;
 
 import java.util.ArrayList;
 
-public class Stack {
+public class StackUsingArrList {
     static class StackB {
         static ArrayList<Integer> list = new ArrayList<>();
 

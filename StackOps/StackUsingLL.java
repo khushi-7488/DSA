@@ -1,4 +1,4 @@
-package Stack;
+package StackOps;
 
 public class StackUsingLL {
     static class Node {
