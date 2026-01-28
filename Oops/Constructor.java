@@ -2,9 +2,9 @@ package Oops;
 
 public class Constructor {
     public static void main(String[] args) {
-        Student s1 = new Student();
-        Student s2 = new Student("khushi");
-        Student s3 = new Student("123");
+        // Student s1 = new Student();
+        // Student s2 = new Student("khushi");
+        // Student s3 = new Student("123");
     }
 }
 

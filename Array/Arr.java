@@ -1,4 +1,3 @@
-import java.util.*;
 
 public class Arr {
     // find maximum subarray by using kadane algorithm 
