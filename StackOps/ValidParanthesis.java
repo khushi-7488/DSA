@@ -7,7 +7,7 @@ public class ValidParanthesis {
         Stack<Character> s = new Stack<>();
         for (int i = 0; i < str.length(); i++) {
             char ch = str.charAt(i);
-            // opening
+            //  opening 
             if (ch == '(' || ch == '{' || ch == '[') {
                 s.push(ch);
             } else {
