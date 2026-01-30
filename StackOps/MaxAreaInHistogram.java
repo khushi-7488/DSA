@@ -9,6 +9,7 @@ public class MaxAreaInHistogram {
         int nsl[] = new int[arr.length];
         Stack<Integer> s = new Stack<>();
 
+        // right smaller 
         for (int i = arr.length - 1; i >= 0; i--) {
             while (!s.isEmpty() && arr[i] <= arr[s.peek()]) {
                 s.pop();
