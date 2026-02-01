@@ -5,15 +5,21 @@ public class QuequeUsingArray {
         static int arr[];
         static int size;
         static int rear;
+        static int front;
 
         Queque(int n) {
             arr = new int[n];
             size = n;
             rear = -1;
+            front = -1;
         }
 
         public static boolean isEmpty() {
-            return rear == -1;
+            return rear == -1 && front == -1;
+        }
+
+        public static boolean isFull() {
+            return (rear + 1) % size == front;
         }
 
         // add
@@ -23,6 +29,18 @@ public class QuequeUsingArray {
                 return;
             }
             rear = rear + 1;
+            arr[rear] = data;
+        }
+
+        public static void addCircularQueque(int data) {
+            if (isFull()) {
+                System.out.println("queque is full");
+                return;
+            }
+            if (front == -1) {
+                front = 0;
+            }
+            rear = (rear + 1) % size;
             arr[rear] = data;
         }
 
@@ -41,6 +59,21 @@ public class QuequeUsingArray {
             return front;
         }
 
+        public static int removeUsingCircularQ() {
+            if (isEmpty()) {
+                System.out.println("Empty queque");
+                return -1;
+            }
+            int res = arr[front];
+            // last element delete
+            if (rear == front) {
+                rear = front = -1;
+            } else {
+                front = (front + 1) % size;
+            }
+            return res;
+        }
+
         // peek
         public static int peek() {
             if (isEmpty()) {
@@ -48,6 +81,13 @@ public class QuequeUsingArray {
                 return -1;
             }
             return arr[0];
+        }
+        public static int peekCircular() {
+            if (isEmpty()) {
+                System.out.println("Empty queque");
+                return -1;
+            }
+            return arr[front];
         }
     }
 
@@ -59,7 +99,7 @@ public class QuequeUsingArray {
         q.add(4);
         q.add(5);
 
-        while(!q.isEmpty()){
+        while (!q.isEmpty()) {
             System.out.println(q.peek());
             q.remove();
         }
