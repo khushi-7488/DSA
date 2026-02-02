@@ -1,6 +1,6 @@
-package Queque;
+package Queue;
 
-public class QuequeUsingArray {
+public class QueueUsingArray {
     static class Queque {
         static int arr[];
         static int size;
