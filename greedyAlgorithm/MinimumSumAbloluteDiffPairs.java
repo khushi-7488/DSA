@@ -16,4 +16,5 @@ public class MinimumSumAbloluteDiffPairs {
         }
         System.out.println(minDiff);
     }
+    
 }
