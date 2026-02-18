@@ -25,13 +25,59 @@ public class Height {
     }
 
     public static int count(Node root) {
-        if(root == null){
+        if (root == null) {
             return 0;
         }
-        int lh= count(root.left);
-        int rh= count(root.right);
+        int lh = count(root.left);
+        int rh = count(root.right);
         int treeCount = lh + rh + 1;
         return treeCount;
+    }
+
+    public static int sum(Node root) {
+        if (root == null) {
+            return 0;
+        }
+        int lh = sum(root.left);
+        int rh = sum(root.right);
+        int treeSum = lh + rh + root.data;
+        return treeSum;
+    }
+
+    public static int diameter(Node root) {
+        if (root == null) {
+            return 0;
+        }
+        int ldm = diameter(root.left);
+        int rdm = diameter(root.right);
+        int lh = height(root.left);
+        int rh = height(root.right);
+        int selftDiam = lh + rh + 1;
+        return Math.max(selftDiam, Math.max(ldm, rdm));
+    }
+
+    // efficient time complexity
+    static class Info {
+        int diam;
+        int ht;
+
+        public Info(int diam, int ht) {
+            this.diam = diam;
+            this.ht = ht;
+        }
+    }
+
+    public static Info diameter2(Node root) {
+        if (root == null) {
+            return new Info(0, 0);
+        }
+        Info leftInfo = diameter2(root.left);
+        Info rightInfo = diameter2(root.right);
+
+        int diam = Math.max(Math.max(leftInfo.diam, rightInfo.diam), leftInfo.ht + rightInfo.ht + 1);
+        int ht = Math.max(leftInfo.ht, rightInfo.ht) + 1;
+
+        return new Info(diam, ht);
     }
 
     public static void main(String[] args) {
@@ -42,7 +88,9 @@ public class Height {
         root.left.right = new Node(5);
         root.right.left = new Node(6);
         root.right.right = new Node(7);
-        System.out.println(height(root));
-        System.out.println(count(root));
+        // System.out.println(height(root));
+        // System.out.println(count(root));
+        // System.out.println(diameter(root));
+        System.out.println(diameter2(root).diam);
     }
 }
