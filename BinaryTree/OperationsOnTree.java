@@ -157,6 +157,18 @@ public class OperationsOnTree {
         }
     }
 
+    public static void kthLevel(Node root, int level, int k) {
+        if (root == null) {
+            return;
+        }
+        if (level == k) {
+            System.out.println(root.data);
+            return;
+        }
+        kthLevel(root.left, level + 1, k);
+        kthLevel(root.right, level + 1, k);
+    }
+
     public static void main(String[] args) {
         Node root = new Node(1);
         root.left = new Node(2);
@@ -175,6 +187,7 @@ public class OperationsOnTree {
         // System.out.println(diameter(root));
         // System.out.println(diameter2(root).diam);
         // System.out.println(isSubTree(root, subRoot));
-        topView(root);
+        // topView(root);
+        kthLevel(root, 1, 2);
     }
 }
