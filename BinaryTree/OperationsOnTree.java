@@ -1,5 +1,6 @@
 package BinaryTree;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class OperationsOnTree {
@@ -165,8 +166,75 @@ public class OperationsOnTree {
             System.out.println(root.data);
             return;
         }
+
         kthLevel(root.left, level + 1, k);
         kthLevel(root.right, level + 1, k);
+    }
+
+    public static boolean getPath(Node root, int n, ArrayList<Node> path) {
+        if (root == null) {
+            return false;
+        }
+
+        path.add(root);
+
+        if (root.data == n) {
+            return true;
+        }
+
+        boolean foundleft = getPath(root.left, n, path);
+        boolean foundright = getPath(root.right, n, path);
+
+        if (foundleft || foundright) {
+            return true;
+        }
+
+        path.remove(path.size() - 1);
+        return false;
+    }
+
+    public static Node lca(Node root, int n1, int n2) {
+        ArrayList<Node> path1 = new ArrayList<>();
+        ArrayList<Node> path2 = new ArrayList<>();
+
+        getPath(root, n1, path1);
+        getPath(root, n2, path2);
+
+        // last common ancestor
+        int i = 0;
+        for (; i < path1.size() && i < path2.size(); i++) {
+            if (path1.get(i) != path2.get(i)) {
+                break;
+            }
+        }
+        // last equal node
+        Node lca = path1.get(i - 1);
+        return lca;
+    }
+
+    // minimize time complexity
+    public static Node lca2(Node root, int n1, int n2) {
+        if (root == null) {
+            return null;
+        }
+
+        if (root.data == n1 || root.data == n2) {
+            return root;
+        }
+
+        Node leftLca = lca2(root.left, n1, n2);
+        Node rightLca = lca2(root.right, n1, n2);
+
+        // leftLca = val and rightLca = null
+        if (rightLca == null) {
+            return leftLca;
+        }
+        // leftLca = null and rightLca = val
+        if (leftLca == null) {
+            return rightLca;
+        }
+
+        return root;
     }
 
     public static void main(String[] args) {
@@ -188,6 +256,7 @@ public class OperationsOnTree {
         // System.out.println(diameter2(root).diam);
         // System.out.println(isSubTree(root, subRoot));
         // topView(root);
-        kthLevel(root, 1, 2);
+        // kthLevel(root, 1, 2);
+        System.out.println(lca2(root, 4, 6).data);
     }
 }
