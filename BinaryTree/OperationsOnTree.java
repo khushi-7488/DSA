@@ -237,6 +237,95 @@ public class OperationsOnTree {
         return root;
     }
 
+    // helper
+    public static int lcaDist(Node root, int n) {
+        if (root == null) {
+            return -1;
+        }
+
+        if (root.data == n) {
+            return 0;
+        }
+
+        int leftDist = lcaDist(root.left, n);
+        int rightDist = lcaDist(root.right, n);
+
+        if (leftDist == -1 && rightDist == -1) {
+            return -1;
+        } else if (leftDist == -1) {
+            return rightDist + 1;
+        } else {
+            return leftDist + 1;
+        }
+    }
+
+    public static int minDisTwoLca(Node root, int n1, int n2) {
+        Node lca = lca2(root, n1, n2);
+        int dist1 = lcaDist(lca, n1);
+        int dist2 = lcaDist(lca, n2);
+
+        return dist1 + dist2;
+
+    }
+
+    public static int KthAncestor(Node root, int n, int k) {
+        if (root == null) {
+            return -1;
+        }
+        if (root.data == n) {
+            return 0;
+        }
+
+        int leftDist = KthAncestor(root.left, n, k);
+        int rightDist = KthAncestor(root.right, n, k);
+
+        if (leftDist == -1 && rightDist == -1) {
+            return -1;
+        }
+
+        int max = Math.max(leftDist, rightDist);
+        if (max + 1 == k) {
+            System.out.println(root.data);
+        }
+        return max + 1;
+    }
+
+    public static int sumTree(Node root) {
+        if (root == null) {
+            return 0;
+        }
+        int lh = sum(root.left);
+        int rh = sum(root.right);
+        int treeSum = lh + rh + root.data;
+        return treeSum;
+    }
+
+    public static int transform(Node root) {
+        if (root == null) {
+            return 0;
+        }
+        int leftChild = transform(root.left);
+        int rightChild = transform(root.right);
+
+        int data = root.data;
+        int newLeft = root.left == null ? 0 : root.left.data;
+        int newRight = root.right == null ? 0 : root.right.data;
+
+        root.data = newLeft + leftChild + newRight+ rightChild;
+
+        return data;
+    }
+
+    public static void preOrder(Node root) {
+        if (root == null) {
+            return;
+        }
+
+        System.out.print(root.data + " ");
+        preOrder(root.left);
+        preOrder(root.right);
+    }
+
     public static void main(String[] args) {
         Node root = new Node(1);
         root.left = new Node(2);
@@ -257,6 +346,12 @@ public class OperationsOnTree {
         // System.out.println(isSubTree(root, subRoot));
         // topView(root);
         // kthLevel(root, 1, 2);
-        System.out.println(lca2(root, 4, 6).data);
+        // System.out.println(lca(root, 4, 6).data);
+        // System.out.println(lca2(root, 4, 6).data);
+        // System.out.println(minDisTwoLca(root, 4, 6));
+        // KthAncestor(root, 5, 2);
+        transform(root);
+        preOrder(root);
+
     }
 }
