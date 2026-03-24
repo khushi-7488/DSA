@@ -1,5 +1,7 @@
 // import java.util.Scanner;
 
+import java.util.Scanner;
+
 class Practice {
     public static void pattern1() {
         for (int i = 1; i <= 4; i++) {
@@ -91,10 +93,10 @@ class Practice {
         return true;
     }
 
-    public static void primeRange (int n){
+    public static void primeRange(int n) {
 
-        for (int i = 2; i <= n ; i ++){
-            if(prime(i)){
+        for (int i = 2; i <= n; i++) {
+            if (prime(i)) {
                 System.out.println(i);
             }
         }
@@ -124,8 +126,6 @@ class Practice {
     }
 
     public static void main(String args[]) {
-        
-       primeRange(5);
+        primeRange(5);
     }
 }
-
