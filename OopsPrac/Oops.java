@@ -6,7 +6,6 @@ public class Oops {
         p1.setColour("Blue");
         System.out.println(p1.colour);
     }
-
 }
 
 class Pen {
